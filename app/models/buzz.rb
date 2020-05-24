@@ -1,0 +1,2 @@
+class Buzz < ApplicationRecord
+end
