@@ -18,11 +18,8 @@
       </div>
       <nav class="level is-mobile">
         <div class="level-left">
-          <%= link_to buzz, class: "level-item" do %>
+          <%= link_to root_path, class: "level-item" do %>
               <span class="icon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
-            <% end %>
-            <%= link_to edit_buzz_path(buzz), class: "level-item" do %>
-              <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
             <% end %>
             <%= link_to buzz, method: :delete, data: { confirm: "Are you sure you want to delete this Buzz" } do %>
                 <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>

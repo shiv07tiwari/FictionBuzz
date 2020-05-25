@@ -6,7 +6,9 @@
         PROFILE SECTION
       </div>
       <div class="column is-three-fifth">
-        <%= render 'form'%>
+        <% if current_user %>
+            <%= render 'form'%>
+          <% end %>
         <%= render 'feed'%>
       </div>
       <div class="column is-one-fifth">
