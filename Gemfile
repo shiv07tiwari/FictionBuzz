@@ -36,10 +36,11 @@ end
 # Bulma CSS
 gem 'bulma-rails', '~> 0.8.2'
 
+# Hashing algorithm for user password
+gem 'bcrypt', '~> 3.1', '>= 3.1.13'
+
 # Simple form
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
-
-gem 'devise', '~> 4.2'
 
 
 group :development do

@@ -1,27 +1,12 @@
-<%= form_with(model: buzz, local: true) do |form| %>
-  <% if buzz.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(buzz.errors.count, "error") %> prohibited this buzz from being saved:</h2>
 
-      <ul>
-        <% buzz.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+<div class="box">
+  <%= simple_form_for @buzz do |f|%>
+  <%= f.error_notification %>
+  <div class="field", , id="testdiv">
+  <div class="control">
+    <%= f.input :content,  input_html: { class: "textarea "}, wrapper: false, label_html: {class: "label"}, placeholder: "Lets get Buzzing....", autofocus: true, label: false %>
   </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
+<%= f.button :submit, class: "button is-black" %>
+<%end%>
+</div>

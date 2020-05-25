@@ -1,9 +1,9 @@
 class BuzzsController < ApplicationController
   before_action :set_buzz, only: [:show, :edit, :update, :destroy]
-
   
   def index
     @buzzs = Buzz.all.order("created_at DESC")
+    @buzz = Buzz.new
   end
 
   def show
@@ -21,7 +21,7 @@ class BuzzsController < ApplicationController
 
     respond_to do |format|
       if @buzz.save
-        format.html { redirect_to @buzz, notice: 'Buzz was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Buzz was successfully created.' }
         format.json { render :show, status: :created, location: @buzz }
       else
         format.html { render :new }
@@ -56,6 +56,6 @@ class BuzzsController < ApplicationController
     end
 
     def buzz_params
-      params.require(:buzz).permit(:name, :content)
+      params.require(:buzz).permit(:content)
     end
 end
