@@ -1,6 +1,5 @@
-
 <div class="box">
-  <%= simple_form_for @buzz do |f|%>
+  <%= simple_form_for([@user, @user.buzzs.build])  do |f|%>
   <%= f.error_notification %>
   <div class="field", , id="testdiv">
   <div class="control">

@@ -1,5 +1,4 @@
-<% @buzzs.each do |buzz| %>
-	<div class="box">
+<div class="box">
   <article class="media">
     <div class="media-left">
       <figure class="image is-64x64">
@@ -10,8 +9,8 @@
       <div class="content">
         <p>
           <strong>
-            <%= buzz.name%>
-          </strong> <small>@johnsmith</small> <small>31m</small>
+            <%= @user.name%>
+          </strong> <small><%= @user.handle %></small> <small>31m</small>
           <br>
           <%= buzz.content%>
         </p>
@@ -21,12 +20,9 @@
           <%= link_to root_path, class: "level-item" do %>
               <span class="icon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
             <% end %>
-            <%= link_to buzz, method: :delete, data: { confirm: "Are you sure you want to delete this Buzz" } do %>
-                <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
-            <% end %>
+                <%= link_to 'Delete', [buzz.user, buzz], method: :delete, class: "button is-danger" %>
         </div>
       </nav>
     </div>
   </article>
 </div>
-<% end %>

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
@@ -15,5 +13,7 @@
   <%= @user.handle %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p>
+  <strong>Handle:</strong>
+  <%= @user.buzzs.count %>
+</p>
