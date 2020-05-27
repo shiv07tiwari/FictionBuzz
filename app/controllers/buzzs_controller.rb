@@ -2,12 +2,28 @@ class BuzzsController < ApplicationController
 
   # Before Action to get the User in defined actions
   before_action :set_user, only: [:index, :create, :destroy]
+
+  skip_before_action :verify_authenticity_token
   
   def index
     # Redirect to Login if not logged in.
     if !current_user
       redirect_to login_url
+    else
+      @feed_test = {}
+      current_user.followeds.each do |user|
+      user.buzzs.each do |user_buzz|
+          @feed_test[user_buzz] = user
+        end
+      end
+    
+      @feed_buzz = {}
+      @buzz_keys = @feed_test.keys.sort_by(&:created_at).reverse
+      @buzz_keys.each do |key|
+        @feed_buzz[key] = @feed_test[key]
+      end
     end
+    
   end
 
   def new

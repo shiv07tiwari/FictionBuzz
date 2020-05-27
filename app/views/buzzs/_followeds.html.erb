@@ -1,0 +1,14 @@
+<nav class="panel is-link">
+  <p class="panel-heading">
+    Followed Users
+  </p>
+  
+  <% current_user.followeds.each do |f|%>
+    <a class="panel-block is-active">
+    <span class="panel-icon">
+      <i class="fas fa-book" aria-hidden="true"></i>
+    </span>
+    <%= f.name%>
+  </a>
+  <% end %>
+  </nav>

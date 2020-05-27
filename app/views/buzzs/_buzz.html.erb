@@ -2,25 +2,32 @@
   <article class="media">
     <div class="media-left">
       <figure class="image is-64x64">
-        <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+        <img src="https://img.icons8.com/bubbles/100/000000/user.png" alt="Image">
       </figure>
     </div>
     <div class="media-content">
       <div class="content">
-        <p>
+        <h6 >
           <strong>
-            <%= @user.name%>
-          </strong> <small><%= @user.handle %></small> <small>31m</small>
+            <%= link_to user_new.name, user_path(user_new)%>
+          </strong> 
+          <small>
+            @<%= user_new.handle %>
+          </small>
           <br>
+          <small>
+            <%= buzz.created_at.strftime("%d/%m/%Y") + " "+ buzz.created_at.strftime("%H:%M")%>
+          </small>
+          </h6>
           <%= buzz.content%>
-        </p>
+        
       </div>
       <nav class="level is-mobile">
         <div class="level-left">
-          <%= link_to root_path, class: "level-item" do %>
-              <span class="icon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
+            
+            <% if current_user.handle == user_new.handle%>
+            <%= link_to 'Delete', [buzz.user, buzz], method: :delete, class: "button is-danger" %>
             <% end %>
-                <%= link_to 'Delete', [buzz.user, buzz], method: :delete, class: "button is-danger" %>
         </div>
       </nav>
     </div>

@@ -1,10 +1,21 @@
 <section class="section">
 	<div class="container">
 		<div class="columns">
-			<%= render 'profile'%>
-			<div class="column is-three-quarter">
+			<div class="column is-one-fifth is-narrow">
+				<%= render 'profile'%>
+			</div>
+			
+			<div class="column is-three-fifth">
 				<%= render 'form'%>
-					<%= render  @user.buzzs[0..-2] %>
+					<% @feed_buzz.each do |buzz,user|%>
+						
+						<%= render  buzz, :user_new => user%>
+					<% end %>
+					
+			</div>
+			<div class="column is-one-fifth">
+				<%= render 'search'%>
+				<%= render 'followeds'%>
 			</div>
 		</div>
 	</div>

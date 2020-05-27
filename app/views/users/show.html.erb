@@ -1,19 +1,45 @@
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<section class="hero">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="columns is-vcentered">
+                    
+                    <div class="column is-offset-1">
+                        <h2 class="title has-text-black">User Profile</h2>
+                        
+                        <div class="box">
+                            <figure class="avatar" height=200px>
+                            <img src="https://img.icons8.com/doodle/96/000000/user.png"/>">
+                        </figure>
+                        <h3 class="title">
+                            <strong><%= @user.name%></strong>
+                        </h3>
+                        <h4 class="subtitle">
+                            <strong>@<%= @user.handle%></strong>
+                        </h4>
+                        <% if current_user == @user %>
+                            <h6 class="subtitle is-link">
+                                <strong>No Need to follow yourself</strong>
+                            </h6>
+                        <% elsif current_user.followeds.include?(@user)%>
+                            <%= link_to 'UnFollow', unfollow_user_path(@user), method: :post, class: "button is-danger is-rounded" %>
+                        <% else %>
+                            <%= link_to 'Follow', follow_user_path(@user), method: :post, class: "button is-link is-rounded" %>
+                        <% end %>
+                        </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+                        <h4 class="title is-2">
+                            <strong>Tweets</strong>
+                        </h4>
+                        <div>
+                            <% sorted_buzz = @user.buzzs.sort_by { |st| st.created_at }.reverse %>
+                            
+                            <%= render  sorted_buzz, :user_new => @user%>
 
-<p>
-  <strong>Handle:</strong>
-  <%= @user.handle %>
-</p>
+                        </div>
 
-<p>
-  <strong>Handle:</strong>
-  <%= @user.buzzs.count %>
-</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

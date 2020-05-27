@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create', as: 'auth'
   get 'logout', to: 'sessions#destroy', as: 'logout' 
 
+  post '/users/:id/follow', to: "users#follow", as: "follow_user"
+  post '/users/:id/unfollow', to: "users#unfollow", as: "unfollow_user"
+  get 'searchuser', to: "users#search", as: "search_user"
 end
