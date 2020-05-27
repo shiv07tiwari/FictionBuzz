@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @result = User.where("name ILIKE ?", params[:search][:query]).first
+    @result = User.where("handle ILIKE ?", params[:search][:query]).first
     if @result != nil
       redirect_to user_path(@result)
     else
